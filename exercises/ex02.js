@@ -5,6 +5,30 @@ const Stack = require('../lib/Stack');
 
 function removeBetween(stack, a, b) {
   // your code here
+  const tempStack = new Stack()
+  let foundA = false
+  let foundB = false
+
+  while(!stack.isEmpty()){
+    const item = stack.pop()
+
+    if(item === a || item === b){
+      tempStack.push(item)
+      if(item === a){
+        foundA = a
+      }
+      if(item === b){
+        foundB = b
+      }else{
+        tempStack.push(item)
+      }
+
+    }
+  }
+
+  while(!tempStack.isEmpty()){
+    stack.push(tempStack.pop())
+  }
 }
 
 const fruits = new Stack();
